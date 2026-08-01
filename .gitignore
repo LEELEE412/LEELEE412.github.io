@@ -1,0 +1,26 @@
+node_modules
+dist
+.DS_Store
+Thumbs.db
+*.local
+*.log
+.vite
+
+# Local launchers and downloaded executables
+*.cmd
+*.bat
+*.ps1
+*.exe
+*.msi
+
+# Package-manager and debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor and temporary files
+.idea/
+.vscode/
+*.tmp
+*.temp
