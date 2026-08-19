@@ -1,13 +1,12 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { ArrowRight, ArrowDownRight } from '@lucide/vue'
 import { profile, researchAreas } from '../data/profile'
 import { projects } from '../data/projects'
 import ProjectCard from '../components/ProjectCard.vue'
-import ProjectModal from '../components/ProjectModal.vue'
 
 const featuredProjects = computed(() => projects.filter((project) => project.featured))
-const selectedProject = ref(null)
+const videoCount = computed(() => projects.filter((project) => project.videoUrl).length)
 </script>
 
 <template>
@@ -35,8 +34,8 @@ const selectedProject = ref(null)
 
       <div class="hero-console" aria-label="주요 연구 분야">
         <div class="console-head">
-          <span>RESEARCH SCOPE</span>
-          <span class="status"><i></i> ACTIVE</span>
+          <span>RESEARCH SCOPE · 2023–2025</span>
+          <span class="status"><i></i> ARCHIVE ONLINE</span>
         </div>
         <div class="console-core">
           <div class="core-rings" aria-hidden="true">
@@ -69,7 +68,7 @@ const selectedProject = ref(null)
     <div class="container intro-grid">
       <div>
         <p class="eyebrow">Research Direction</p>
-        <h2 class="section-title">기술을 연결해<br />더 나은 경험을 설계합니다.</h2>
+        <h2 class="section-title">연구 아이디어를<br />직접 경험하게 만듭니다.</h2>
       </div>
       <div class="intro-copy">
         <p>{{ profile.introduction }}</p>
@@ -81,10 +80,10 @@ const selectedProject = ref(null)
     </div>
 
     <div class="container stats-strip" aria-label="포트폴리오 요약">
-      <div><strong>06</strong><span>Projects</span></div>
-      <div><strong>04</strong><span>Research Areas</span></div>
-      <div><strong>XR</strong><span>Core Perspective</span></div>
-      <div><strong>R&amp;D</strong><span>From Idea to Prototype</span></div>
+      <div><strong>{{ projects.length.toString().padStart(2, '0') }}</strong><span>Case Studies</span></div>
+      <div><strong>{{ videoCount.toString().padStart(2, '0') }}</strong><span>Demo Videos</span></div>
+      <div><strong>01</strong><span>Journal Article</span></div>
+      <div><strong>23–25</strong><span>Research Archive</span></div>
     </div>
   </section>
 
@@ -101,27 +100,20 @@ const selectedProject = ref(null)
     </div>
 
     <div class="container project-grid project-grid-featured">
-      <ProjectCard
-        v-for="project in featuredProjects"
-        :key="project.id"
-        :project="project"
-        @select="selectedProject = $event"
-      />
+      <ProjectCard v-for="project in featuredProjects" :key="project.id" :project="project" />
     </div>
   </section>
 
   <section class="home-cta">
     <div class="container home-cta-inner">
       <div>
-        <p class="eyebrow eyebrow-light">Let’s Connect</p>
-        <h2>새로운 연구와<br />협업을 이야기해요.</h2>
+        <p class="eyebrow eyebrow-light">Research Archive</p>
+        <h2>영상과 기술 맥락을<br />한 프로젝트씩 살펴보세요.</h2>
       </div>
-      <RouterLink class="button button-inverse" to="/contact">
-        Contact
+      <RouterLink class="button button-inverse" to="/projects">
+        View Projects
         <ArrowRight :size="18" aria-hidden="true" />
       </RouterLink>
     </div>
   </section>
-
-  <ProjectModal :project="selectedProject" @close="selectedProject = null" />
 </template>

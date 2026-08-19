@@ -1,9 +1,16 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { findProject } from '../data/projects'
 
 const routes = [
   { path: '/', name: 'home', component: () => import('../views/HomeView.vue'), meta: { title: 'Home' } },
   { path: '/about', name: 'about', component: () => import('../views/AboutView.vue'), meta: { title: 'About' } },
   { path: '/projects', name: 'projects', component: () => import('../views/ProjectsView.vue'), meta: { title: 'Projects' } },
+  {
+    path: '/projects/:id',
+    name: 'project-detail',
+    component: () => import('../views/ProjectDetailView.vue'),
+    meta: { title: 'Project' },
+  },
   { path: '/publications', name: 'publications', component: () => import('../views/PublicationsView.vue'), meta: { title: 'Publications' } },
   { path: '/experience', name: 'experience', component: () => import('../views/ExperienceView.vue'), meta: { title: 'Experience' } },
   { path: '/contact', name: 'contact', component: () => import('../views/ContactView.vue'), meta: { title: 'Contact' } },
@@ -19,7 +26,8 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
-  document.title = `${to.meta.title} | R&D Portfolio`
+  const project = to.name === 'project-detail' ? findProject(to.params.id) : null
+  document.title = project ? `${project.title} | 이세진 Portfolio` : `${to.meta.title} | 이세진 Portfolio`
 })
 
 export default router

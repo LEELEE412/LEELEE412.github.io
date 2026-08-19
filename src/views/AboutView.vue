@@ -14,10 +14,10 @@ import { profile, researchAreas, skillGroups } from '../data/profile'
 
   <section class="section">
     <div class="container about-intro">
-      <div class="portrait-placeholder" role="img" aria-label="프로필 사진 준비 중">
-        <span>PROFILE</span>
-        <strong>PHOTO</strong>
-        <small>이미지를 추가해 주세요</small>
+      <div class="portrait-placeholder profile-manifest" role="img" aria-label="이세진 연구 분야">
+        <span>RESEARCHER</span>
+        <strong>XR / DT</strong>
+        <small>BUILDING EXPERIENCES<br />BETWEEN REAL &amp; VIRTUAL</small>
       </div>
       <div class="about-copy">
         <p class="eyebrow">Profile</p>
@@ -58,7 +58,7 @@ import { profile, researchAreas, skillGroups } from '../data/profile'
       <div>
         <p class="eyebrow">Capabilities</p>
         <h2 class="section-title">주요 기술 스택</h2>
-        <p class="skills-lead">실제 사용 기술에 맞게 <code>src/data/profile.js</code>만 수정하면 이 목록을 업데이트할 수 있습니다.</p>
+        <p class="skills-lead">XR 콘텐츠, 로봇·지리공간 데이터와 생성형 AI 인터랙션을 하나의 프로토타입으로 연결합니다.</p>
       </div>
       <div class="skill-groups">
         <article v-for="(group, index) in skillGroups" :key="group.title">
@@ -74,7 +74,7 @@ import { profile, researchAreas, skillGroups } from '../data/profile'
 
   <section class="slim-cta">
     <div class="container slim-cta-inner">
-      <p>구체적인 결과물은 프로젝트에서 확인할 수 있습니다.</p>
+      <p>구체적인 결과물과 시연 영상은 프로젝트에서 확인할 수 있습니다.</p>
       <RouterLink class="text-link text-link-light" to="/projects">
         프로젝트 보기 <ArrowRight :size="17" aria-hidden="true" />
       </RouterLink>

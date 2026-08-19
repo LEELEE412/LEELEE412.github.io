@@ -1,17 +1,16 @@
 # R&D Portfolio
 
-VR, Robotics, Digital Twin, AI 분야의 연구와 프로젝트를 소개하기 위한 개인 포트폴리오입니다. Vue 3와 Vite로 제작했으며 별도 서버나 데이터베이스 없이 GitHub Pages에 배포할 수 있습니다.
+XR, Robotics, Digital Twin, Geospatial, AI 분야의 2023–2025 연구와 프로젝트를 소개하기 위한 개인 포트폴리오입니다. Vue 3와 Vite로 제작했으며 별도 서버나 데이터베이스 없이 GitHub Pages에 배포할 수 있습니다.
 
 배포 주소: [https://leelee412.github.io/](https://leelee412.github.io/)
 
 ## 주요 기능
 
 - Home, About, Projects, Publications, Experience, Contact 페이지
-- 분야별 프로젝트 필터와 접근 가능한 상세 모달
+- 연도·분야 조합 프로젝트 필터와 개별 케이스 스터디 페이지
 - 모바일, 태블릿, 데스크톱 반응형 레이아웃
 - 데이터 파일 중심의 콘텐츠 관리
-- 이미지가 없을 때 표시되는 기본 프로젝트 placeholder
-- 링크가 있을 때만 노출되는 논문·영상·프로젝트 버튼
+- 링크가 있을 때만 노출되는 논문·데모 영상·코드 버튼
 - SEO 및 Open Graph 메타태그
 - GitHub Pages 호환 해시 라우팅
 - GitHub Actions 자동 배포
@@ -47,7 +46,8 @@ npm run dev
 ```js
 {
   id: 'unique-project-id',
-  index: '07',
+  index: '13',
+  year: '2025',
   title: '프로젝트 제목',
   subtitle: 'English Subtitle',
   description: '프로젝트 설명',
@@ -56,19 +56,28 @@ npm run dev
   role: '담당 역할',
   technologies: ['Unity', 'OpenAI API'],
   achievements: ['주요 성과'],
-  image: './images/project-name.jpg',
+  challenge: '해결하려 한 문제',
+  contribution: ['설계하고 구현한 내용'],
+  image: '/media/2025/project-name-cover.jpg',
   imageAlt: '프로젝트 화면 설명',
   paperUrl: '',
-  videoUrl: '',
-  projectUrl: '',
+  videoUrl: '/media/2025/project-name-demo.mp4',
+  codeUrl: '',
+  codeStatus: 'Private prototype',
   featured: false,
 }
 ```
 
-- 이미지는 `public/images` 폴더에 넣고 `./images/파일명.jpg` 형식으로 지정합니다.
-- 이미지 값이 비어 있으면 기본 placeholder가 표시됩니다.
-- `paperUrl`, `videoUrl`, `projectUrl`이 비어 있으면 해당 버튼은 표시되지 않습니다.
+- 공개할 이미지와 영상은 `public/media/연도` 폴더에 넣고 `/media/연도/파일명` 형식으로 지정합니다.
+- `paperUrl`, `videoUrl`, `codeUrl`이 비어 있으면 해당 버튼은 표시되지 않습니다.
 - 새 필터가 필요하면 `projectFilters` 배열에도 분야명을 추가합니다.
+
+### 공개 파일과 원본 자료
+
+- GitHub Pages에서 사용하는 압축 이미지·영상만 `public/media/2023`, `public/media/2024`, `public/media/2025`에 둡니다.
+- 원본 발표 자료와 고용량 영상은 로컬 `my/`에 보관하며 `.gitignore`로 Git 업로드에서 제외합니다.
+- 분석용 프레임, 임시 변환 파일, 참고 저장소는 로컬 `_work/`에 보관하며 역시 Git에 올리지 않습니다.
+- 웹페이지에서 실제로 표시하는 파일은 방문자가 내려받을 수 있으므로, 공개하면 안 되는 개인정보·원본·소스 코드는 `public/`에 넣지 않습니다.
 
 ### 개인 정보와 연락처 수정
 
@@ -110,13 +119,16 @@ Vue Router는 `createWebHashHistory()`를 사용하므로 GitHub Pages에서 하
 .
 ├─ .github/workflows/deploy.yml
 ├─ public/
+│  ├─ media/
+│  │  ├─ 2023/
+│  │  ├─ 2024/
+│  │  └─ 2025/
 │  └─ og-card.png
 ├─ src/
 │  ├─ assets/main.css
 │  ├─ components/
 │  │  ├─ PageHero.vue
 │  │  ├─ ProjectCard.vue
-│  │  ├─ ProjectModal.vue
 │  │  └─ ProjectVisual.vue
 │  ├─ data/
 │  │  ├─ experience.js
@@ -129,6 +141,7 @@ Vue Router는 `createWebHashHistory()`를 사용하므로 GitHub Pages에서 하
 │  │  ├─ ContactView.vue
 │  │  ├─ ExperienceView.vue
 │  │  ├─ HomeView.vue
+│  │  ├─ ProjectDetailView.vue
 │  │  ├─ ProjectsView.vue
 │  │  └─ PublicationsView.vue
 │  ├─ App.vue
