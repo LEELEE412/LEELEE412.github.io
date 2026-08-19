@@ -7,6 +7,10 @@ Thumbs.db
 *.log
 .vite
 
+# Private source material and local analysis outputs
+my/
+_work/
+
 # Local launchers and downloaded executables
 *.cmd
 *.bat

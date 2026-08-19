@@ -1,16 +1,16 @@
 export const profile = {
-  name: '이름을 입력하세요',
-  role: 'Researcher & Developer',
-  tagline: '가상과 현실을 연결하는 지능형 인터랙션을 연구하고 개발합니다.',
+  name: '이세진',
+  role: 'XR · Robotics Researcher & Developer',
+  tagline: '가상현실, 로봇, 디지털 트윈과 AI를 연결해 직접 경험할 수 있는 연구 프로토타입을 만듭니다.',
   introduction:
-    'VR, 로보틱스, 디지털 트윈, AI의 접점에서 사람이 기술을 더 직관적이고 안전하게 활용할 수 있는 방법을 탐구합니다. 연구 아이디어를 실제로 경험할 수 있는 프로토타입으로 구현하는 과정에 집중합니다.',
-  location: '소속 및 위치 · 추후 입력',
-  availability: '연구 협업 및 프로젝트 문의',
-  email: '이메일 · 추후 입력',
+    'Unity 기반 XR 콘텐츠부터 ROS 무인차량 연동, 센서 데이터 기반 디지털 트윈, 생성형 AI 인터랙션까지 연구 아이디어를 실제로 작동하는 시스템으로 구현해 왔습니다. 기술 자체보다 사용자가 무엇을 보고, 느끼고, 판단할 수 있는지에 집중합니다.',
+  location: 'Changwon, Republic of Korea',
+  availability: 'Research collaboration · XR prototyping',
+  email: '',
   emailHref: '',
-  githubLabel: 'GitHub · 추후 입력',
-  githubUrl: '',
-  linkedInLabel: '기타 링크 · 추후 입력',
+  githubLabel: 'github.com/LEELEE412',
+  githubUrl: 'https://github.com/LEELEE412',
+  linkedInLabel: '',
   linkedInUrl: '',
 }
 
@@ -18,40 +18,40 @@ export const researchAreas = [
   {
     key: 'VR',
     title: 'Virtual Reality',
-    description: '몰입형 인터페이스와 공간 기반 상호작용',
+    description: '몰입형 인터페이스, 공간 UI와 체험 시나리오',
   },
   {
     key: 'RB',
     title: 'Robotics',
-    description: '원격제어, 협업 로봇, 이동 로봇 시스템',
+    description: 'ROS 기반 이동 로봇과 원격·가상 시뮬레이션',
   },
   {
     key: 'DT',
     title: 'Digital Twin',
-    description: '현실과 가상 환경의 실시간 연결과 시각화',
+    description: '센서 데이터와 가상 모델의 실시간 동기화',
   },
   {
     key: 'AI',
     title: 'Artificial Intelligence',
-    description: '지능형 에이전트와 자연스러운 사용자 경험',
+    description: 'GPT와 음성 UI를 활용한 대화형 경험',
   },
 ]
 
 export const skillGroups = [
   {
     title: 'Immersive',
-    items: ['Unity', 'VR / AR / XR', 'HoloLens 2', '추후 입력'],
+    items: ['Unity', 'XR Interaction Toolkit', 'Meta Quest 2', 'Vive Pro Eye'],
   },
   {
     title: 'Robotics',
-    items: ['UGV / AGV', 'Robot Interaction', '추후 입력'],
+    items: ['ROS', 'TurtleBot3', 'LiDAR / SLAM', 'ROS-TCP-Connector'],
   },
   {
     title: 'Development',
-    items: ['C#', 'JavaScript', 'Vue.js', 'Git', '추후 입력'],
+    items: ['C#', 'Python', 'JavaScript', 'Vue.js'],
   },
   {
     title: 'AI & Data',
-    items: ['GPT', 'AI Interaction', '추후 입력'],
+    items: ['GPT Integration', 'Prompt Engineering', 'Sensor Data Fusion', 'Digital Twin'],
   },
 ]

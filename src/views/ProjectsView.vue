@@ -2,11 +2,9 @@
 import { computed, ref } from 'vue'
 import PageHero from '../components/PageHero.vue'
 import ProjectCard from '../components/ProjectCard.vue'
-import ProjectModal from '../components/ProjectModal.vue'
 import { projectFilters, projects } from '../data/projects'
 
 const activeFilter = ref('All')
-const selectedProject = ref(null)
 
 const filteredProjects = computed(() => {
   if (activeFilter.value === 'All') return projects
@@ -17,8 +15,8 @@ const filteredProjects = computed(() => {
 <template>
   <PageHero
     eyebrow="Projects"
-    title="아이디어를 작동하는 경험으로."
-    description="몰입형 인터페이스, 로봇 제어, 디지털 트윈, 지능형 상호작용을 아우르는 연구·개발 프로젝트입니다."
+    title="연구를 작동하는 경험으로."
+    description="2023년 실제 시연 자료와 논문을 바탕으로 정리한 XR, 로봇, 디지털 트윈, AI 프로젝트입니다."
     index="02"
   />
 
@@ -36,18 +34,11 @@ const filteredProjects = computed(() => {
           {{ filter }}
         </button>
       </div>
-      <p><strong>{{ filteredProjects.length.toString().padStart(2, '0') }}</strong> PROJECTS</p>
+      <p><strong>{{ filteredProjects.length.toString().padStart(2, '0') }}</strong> CASE STUDIES</p>
     </div>
 
     <div class="container project-grid">
-      <ProjectCard
-        v-for="project in filteredProjects"
-        :key="project.id"
-        :project="project"
-        @select="selectedProject = $event"
-      />
+      <ProjectCard v-for="project in filteredProjects" :key="project.id" :project="project" />
     </div>
   </section>
-
-  <ProjectModal :project="selectedProject" @close="selectedProject = null" />
 </template>

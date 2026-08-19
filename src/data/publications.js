@@ -1,11 +1,11 @@
 export const publications = [
   {
-    id: 'publication-placeholder-1',
-    year: '추후 입력',
-    type: 'Journal / Conference',
-    title: '논문 또는 학술대회 발표 제목을 입력하세요',
-    venue: '학회명 · 추후 입력',
-    authors: '저자 · 추후 입력',
-    url: '',
+    id: 'immersive-vr-investment-risk-2023',
+    year: '2023',
+    type: 'Journal Article',
+    title: '실재감 높은 투자위험 체험을 위한 몰입형 가상현실 콘텐츠 개발',
+    venue: '한국정보기술학회논문지 · Vol. 21, No. 6, pp. 127–134',
+    authors: '이세진 · 변공규 · 유선진',
+    url: 'https://doi.org/10.14801/jkiit.2023.21.6.127',
   },
 ]
