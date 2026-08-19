@@ -11,16 +11,23 @@ const routes = [
     component: () => import('../views/ProjectDetailView.vue'),
     meta: { title: 'Project' },
   },
-  { path: '/publications', name: 'publications', component: () => import('../views/PublicationsView.vue'), meta: { title: 'Publications' } },
-  { path: '/experience', name: 'experience', component: () => import('../views/ExperienceView.vue'), meta: { title: 'Experience' } },
-  { path: '/contact', name: 'contact', component: () => import('../views/ContactView.vue'), meta: { title: 'Contact' } },
+  { path: '/publications', redirect: { name: 'about', hash: '#publications' } },
+  { path: '/experience', redirect: { name: 'about', hash: '#experience' } },
+  { path: '/contact', redirect: { name: 'about', hash: '#contact' } },
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  scrollBehavior() {
+  scrollBehavior(to) {
+    if (to.hash) {
+      return new Promise((resolve) => {
+        window.setTimeout(() => {
+          resolve({ el: to.hash, top: 88, behavior: 'smooth' })
+        }, 120)
+      })
+    }
     return { top: 0, behavior: 'smooth' }
   },
 })

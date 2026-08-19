@@ -2,16 +2,28 @@
 import { computed, ref } from 'vue'
 import PageHero from '../components/PageHero.vue'
 import ProjectCard from '../components/ProjectCard.vue'
-import { projectFilters, projects } from '../data/projects'
+import { projects } from '../data/projects'
+
+const fieldFilters = [
+  { label: 'All', categories: [] },
+  { label: 'XR', categories: ['VR', 'HCI'] },
+  { label: 'Robotics', categories: ['Robotics'] },
+  { label: 'Digital Twin', categories: ['Digital Twin', 'Geospatial'] },
+  { label: 'AI / Web', categories: ['AI', 'Web'] },
+]
 
 const activeFilter = ref('All')
 const activeYear = ref('All years')
-const projectYears = ['All years', '2025', '2024', '2023']
+const projectYears = ['All years', ...new Set(projects.map((project) => project.year))]
 
 const filteredProjects = computed(() => {
+  const selectedField = fieldFilters.find((filter) => filter.label === activeFilter.value)
+
   return projects.filter((project) => {
     const matchesYear = activeYear.value === 'All years' || project.year === activeYear.value
-    const matchesField = activeFilter.value === 'All' || project.categories.includes(activeFilter.value)
+    const matchesField =
+      !selectedField?.categories.length ||
+      selectedField.categories.some((category) => project.categories.includes(category))
     return matchesYear && matchesField
   })
 })
@@ -20,12 +32,12 @@ const filteredProjects = computed(() => {
 <template>
   <PageHero
     eyebrow="Projects"
-    title="연구를 작동하는 경험으로."
-    description="2023–2025년 실제 시연 자료와 논문, 코드베이스를 바탕으로 정리한 XR, 로봇, 지리공간, AI 프로젝트입니다."
-    index="02"
+    title="Projects"
+    description="XR, 로보틱스, 디지털 트윈과 AI를 실제로 작동하는 프로토타입으로 구현한 작업입니다."
+    compact
   />
 
-  <section class="section projects-section">
+  <section class="section projects-section projects-section-compact">
     <div class="container project-toolbar">
       <div class="project-filter-groups">
         <div class="project-filter-group">
@@ -47,14 +59,14 @@ const filteredProjects = computed(() => {
           <span class="filter-group-label">Field</span>
           <div class="filter-list" role="group" aria-label="프로젝트 분야 필터">
             <button
-              v-for="filter in projectFilters"
-              :key="filter"
+              v-for="filter in fieldFilters"
+              :key="filter.label"
               type="button"
-              :class="{ active: activeFilter === filter }"
-              :aria-pressed="activeFilter === filter"
-              @click="activeFilter = filter"
+              :class="{ active: activeFilter === filter.label }"
+              :aria-pressed="activeFilter === filter.label"
+              @click="activeFilter = filter.label"
             >
-              {{ filter }}
+              {{ filter.label }}
             </button>
           </div>
         </div>

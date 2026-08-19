@@ -6,8 +6,11 @@ XR, Robotics, Digital Twin, Geospatial, AI 분야의 2023–2025 연구와 프�
 
 ## 주요 기능
 
-- Home, About, Projects, Publications, Experience, Contact 페이지
-- 연도·분야 조합 프로젝트 필터와 개별 케이스 스터디 페이지
+- Home, Projects, About의 세 가지 핵심 화면
+- 연도·통합 분야 필터와 고밀도 2열 프로젝트 카드
+- 구현·성과·미디어·관련 링크 중심의 간결한 프로젝트 상세 페이지
+- About 안에 Profile, Skills, Experience, Education, Publications, Contact 통합
+- 기존 `/experience`, `/publications`, `/contact` URL의 About 섹션 리다이렉트
 - 모바일, 태블릿, 데스크톱 반응형 레이아웃
 - 데이터 파일 중심의 콘텐츠 관리
 - 링크가 있을 때만 노출되는 논문·데모 영상·코드 버튼
@@ -70,7 +73,7 @@ npm run dev
 
 - 공개할 이미지와 영상은 `public/media/연도` 폴더에 넣고 `/media/연도/파일명` 형식으로 지정합니다.
 - `paperUrl`, `videoUrl`, `codeUrl`이 비어 있으면 해당 버튼은 표시되지 않습니다.
-- 새 필터가 필요하면 `projectFilters` 배열에도 분야명을 추가합니다.
+- 화면의 통합 분야 필터를 바꾸려면 `src/views/ProjectsView.vue`의 `fieldFilters` 매핑을 수정합니다.
 
 ### 공개 파일과 원본 자료
 
@@ -150,3 +153,5 @@ Vue Router는 `createWebHashHistory()`를 사용하므로 GitHub Pages에서 하
 ├─ package.json
 └─ vite.config.js
 ```
+
+`ContactView.vue`, `ExperienceView.vue`, `PublicationsView.vue`는 데이터와 기존 구현을 보존하기 위해 남겨두었습니다. 해당 URL은 현재 About의 대응 섹션으로 이동합니다.

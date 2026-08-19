@@ -2,16 +2,14 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { Menu, X, ArrowUpRight } from '@lucide/vue'
+import { profile } from './data/profile'
 
 const route = useRoute()
 const menuOpen = ref(false)
 
 const navigation = [
-  { label: 'Home', to: '/' },
-  { label: 'About', to: '/about' },
   { label: 'Projects', to: '/projects' },
-  { label: 'Publications', to: '/publications' },
-  { label: 'Experience', to: '/experience' },
+  { label: 'About', to: '/about' },
 ]
 
 watch(
@@ -30,8 +28,8 @@ watch(
       <RouterLink class="brand" to="/" aria-label="포트폴리오 홈">
         <span class="brand-mark" aria-hidden="true">R</span>
         <span class="brand-copy">
-          <strong>R&amp;D PORTFOLIO</strong>
-          <small>Immersive Intelligence</small>
+          <strong>LEE SEJIN</strong>
+          <small>XR · ROBOTICS · DIGITAL TWIN</small>
         </span>
       </RouterLink>
 
@@ -51,10 +49,10 @@ watch(
         <RouterLink v-for="item in navigation" :key="item.to" :to="item.to">
           {{ item.label }}
         </RouterLink>
-        <RouterLink class="nav-contact" to="/contact">
-          Contact
+        <a class="nav-contact" :href="profile.githubUrl" target="_blank" rel="noopener noreferrer">
+          GitHub
           <ArrowUpRight :size="15" aria-hidden="true" />
-        </RouterLink>
+        </a>
       </nav>
     </div>
   </header>
@@ -66,11 +64,11 @@ watch(
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <p class="footer-title">R&amp;D PORTFOLIO</p>
-        <p>XR · Robotics · Digital Twin · Geospatial · AI</p>
+        <p class="footer-title">{{ profile.name }}</p>
+        <p>{{ profile.role }}</p>
       </div>
       <div class="footer-meta">
-        <RouterLink to="/contact">연구 및 프로젝트 문의</RouterLink>
+        <RouterLink :to="{ path: '/about', hash: '#contact' }">Contact</RouterLink>
         <p>© {{ new Date().getFullYear() }}. All rights reserved.</p>
       </div>
     </div>
