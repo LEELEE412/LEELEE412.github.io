@@ -27,7 +27,7 @@ const icons = {
         </div>
 
         <ol class="timeline">
-          <li v-for="item in group.items" :key="`${group.id}-${item.title}`">
+          <li v-for="item in group.items" :key="`${group.id}-${item.period}-${item.title}`">
             <span class="timeline-dot" aria-hidden="true"></span>
             <div class="timeline-period">{{ item.period }}</div>
             <div>

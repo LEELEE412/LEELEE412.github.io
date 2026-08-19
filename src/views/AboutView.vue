@@ -16,7 +16,7 @@ import { profile, researchAreas, skillGroups } from '../data/profile'
     <div class="container about-intro">
       <div class="portrait-placeholder profile-manifest" role="img" aria-label="이세진 연구 분야">
         <span>RESEARCHER</span>
-        <strong>XR / AI</strong>
+        <strong>XR / DT</strong>
         <small>BUILDING EXPERIENCES<br />BETWEEN REAL &amp; VIRTUAL</small>
       </div>
       <div class="about-copy">
@@ -58,7 +58,7 @@ import { profile, researchAreas, skillGroups } from '../data/profile'
       <div>
         <p class="eyebrow">Capabilities</p>
         <h2 class="section-title">주요 기술 스택</h2>
-        <p class="skills-lead">XR 콘텐츠, 로봇 데이터 연동과 생성형 AI 인터랙션을 하나의 프로토타입으로 연결합니다.</p>
+        <p class="skills-lead">XR 콘텐츠, 로봇·지리공간 데이터와 생성형 AI 인터랙션을 하나의 프로토타입으로 연결합니다.</p>
       </div>
       <div class="skill-groups">
         <article v-for="(group, index) in skillGroups" :key="group.title">

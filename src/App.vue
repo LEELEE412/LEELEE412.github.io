@@ -67,7 +67,7 @@ watch(
     <div class="container footer-inner">
       <div>
         <p class="footer-title">R&amp;D PORTFOLIO</p>
-        <p>VR · Robotics · Digital Twin · AI</p>
+        <p>XR · Robotics · Digital Twin · Geospatial · AI</p>
       </div>
       <div class="footer-meta">
         <RouterLink to="/contact">연구 및 프로젝트 문의</RouterLink>

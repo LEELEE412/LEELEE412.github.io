@@ -1474,6 +1474,26 @@ code {
   gap: 8px;
 }
 
+.project-filter-groups {
+  display: grid;
+  gap: 14px;
+}
+
+.project-filter-group {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.filter-group-label {
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .filter-list button {
   min-height: 38px;
   border: 1px solid var(--line);
@@ -2072,6 +2092,8 @@ code {
   .slim-cta-inner { min-height: 150px; align-items: flex-start; flex-direction: column; justify-content: center; }
 
   .project-toolbar { align-items: flex-start; flex-direction: column-reverse; }
+  .project-filter-groups { width: 100%; }
+  .project-filter-group { grid-template-columns: 1fr; gap: 7px; }
   .filter-list { width: 100%; }
   .filter-list button { flex: 1 0 auto; }
 

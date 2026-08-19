@@ -34,7 +34,7 @@ const videoCount = computed(() => projects.filter((project) => project.videoUrl)
 
       <div class="hero-console" aria-label="주요 연구 분야">
         <div class="console-head">
-          <span>RESEARCH SCOPE · 2023</span>
+          <span>RESEARCH SCOPE · 2023–2025</span>
           <span class="status"><i></i> ARCHIVE ONLINE</span>
         </div>
         <div class="console-core">
@@ -83,7 +83,7 @@ const videoCount = computed(() => projects.filter((project) => project.videoUrl)
       <div><strong>{{ projects.length.toString().padStart(2, '0') }}</strong><span>Case Studies</span></div>
       <div><strong>{{ videoCount.toString().padStart(2, '0') }}</strong><span>Demo Videos</span></div>
       <div><strong>01</strong><span>Journal Article</span></div>
-      <div><strong>2023</strong><span>Research Archive</span></div>
+      <div><strong>23–25</strong><span>Research Archive</span></div>
     </div>
   </section>
 

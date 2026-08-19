@@ -5,6 +5,20 @@ export const experienceGroups = [
     label: '연구 · 프로젝트',
     items: [
       {
+        period: '2025',
+        title: '지리공간 데이터 기반 3D 도시 제작',
+        organization: 'Geospatial · Digital Twin · Full-stack R&D',
+        description:
+          'DEM·위성영상·OpenStreetMap 데이터를 가공해 Unity와 Unreal Engine용 도시 환경을 생성하고, Vue·Django 금융 플랫폼 팀 프로젝트에 참여했습니다.',
+      },
+      {
+        period: '2024',
+        title: '이기종 다중무인체 가상시뮬레이션 연구',
+        organization: 'VR · Robotics · Generative AI R&D',
+        description:
+          'LiDAR 포인트클라우드 VR 시각화, 실물–가상 무인보트 연동과 RAG 기반 군사 VR 의사결정 인터페이스를 구현했습니다.',
+      },
+      {
         period: '2023',
         title: '이기종 다중무인체 가상시뮬레이션 연구',
         organization: 'XR · Robotics · Digital Twin R&D',
