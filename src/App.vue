@@ -8,6 +8,7 @@ const route = useRoute()
 const menuOpen = ref(false)
 
 const navigation = [
+  { label: 'Home', to: '/' },
   { label: 'Projects', to: '/projects' },
   { label: 'About', to: '/about' },
 ]
