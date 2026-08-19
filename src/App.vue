@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { Menu, X, ArrowUpRight } from '@lucide/vue'
+import { Menu, X } from '@lucide/vue'
 import { profile } from './data/profile'
 
 const route = useRoute()
@@ -49,10 +49,6 @@ watch(
         <RouterLink v-for="item in navigation" :key="item.to" :to="item.to">
           {{ item.label }}
         </RouterLink>
-        <a class="nav-contact" :href="profile.githubUrl" target="_blank" rel="noopener noreferrer">
-          GitHub
-          <ArrowUpRight :size="15" aria-hidden="true" />
-        </a>
       </nav>
     </div>
   </header>

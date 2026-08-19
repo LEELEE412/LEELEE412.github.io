@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
-import { ArrowRight, Code2 } from '@lucide/vue'
-import { profile, researchAreas } from '../data/profile'
+import { ArrowRight } from '@lucide/vue'
+import { profile } from '../data/profile'
 import { projects } from '../data/projects'
 import ProjectCard from '../components/ProjectCard.vue'
 
@@ -23,22 +23,8 @@ const featuredProjects = computed(() => projects.filter((project) => project.fea
             Projects
             <ArrowRight :size="18" aria-hidden="true" />
           </RouterLink>
-          <a class="button button-outline-light" :href="profile.githubUrl" target="_blank" rel="noopener noreferrer">
-            <Code2 :size="18" aria-hidden="true" />
-            GitHub
-          </a>
         </div>
       </div>
-
-      <ul class="home-focus-list" aria-label="주요 관심 분야">
-        <li v-for="area in researchAreas" :key="area.key">
-          <span>{{ area.key }}</span>
-          <div>
-            <strong>{{ area.title }}</strong>
-            <small>{{ area.description }}</small>
-          </div>
-        </li>
-      </ul>
     </div>
   </section>
 
