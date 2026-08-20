@@ -14,7 +14,14 @@ import {
 import { findProject, projects } from '../data/projects'
 
 const route = useRoute()
-const visibleProjects = computed(() => projects.filter((item) => !item.hidden))
+const visibleProjects = computed(() =>
+  projects
+    .filter((item) => !item.hidden)
+    .sort(
+      (first, second) =>
+        Number(first.year) - Number(second.year) || Number(first.index) - Number(second.index),
+    ),
+)
 const project = computed(() => {
   const selectedProject = findProject(route.params.id)
   return selectedProject?.hidden ? null : selectedProject
