@@ -10,6 +10,7 @@ Thumbs.db
 # Private source material and local analysis outputs
 my/
 _work/
+tmp/
 
 # Local launchers and downloaded executables
 *.cmd

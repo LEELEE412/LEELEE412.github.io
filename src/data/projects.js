@@ -124,37 +124,336 @@ export const projects = [
     codeUrl: '',
     codeStatus: 'Private prototype',
     featured: false,
+    hidden: true,
+    mergedInto: 'vr-unmanned-boat-digital-twin',
   },
   {
     id: 'vr-unmanned-boat-digital-twin',
     index: '05',
     year: '2024',
-    title: 'VR–실물 무인보트 연동 시뮬레이션',
-    subtitle: 'MARINE ROBOT DIGITAL TWIN',
+    title: 'Unity–ROS2 기반 무인보트 디지털 트윈',
+    subtitle: 'VIRTUAL SIMULATION · EMBEDDED SYSTEM · FIELD VALIDATION',
     description:
-      'Unity 해양 환경과 VR 드라이빙 장치, 실제 무인보트의 제어·센서 데이터를 연결해 가상과 현실의 주행을 함께 검증한 시뮬레이션입니다.',
+      'Unity에서 검증한 센서·제어 구조를 실제 쌍동선 무인보트로 옮겨 40회의 수상 실험으로 검증한 석사 졸업 연구입니다.',
     challenge:
-      '물의 저항과 관성 때문에 발생하는 실제 보트의 움직임을 가상 환경과 맞추고, 사용자의 조작을 안정적인 추진·조향 제어로 변환해야 했습니다.',
+      '2023년 Arduino 기반 실차–가상 차량 프로토타입에서 겪은 메모리와 실시간 데이터 동기화의 한계를 출발점으로 삼았습니다. Unity에 물의 움직임과 수상 환경, LiDAR·GPS·IMU·카메라 가상 센서를 구현하고 ROS2 제어 구조를 먼저 검증한 뒤, 같은 메시지와 노드 구조를 실제 쌍동선 무인보트의 Jetson Nano 임베디드 시스템으로 옮겼습니다.\n\n선체 출력과 후가공, 방수, 부품 선정과 조립, Wi-Fi·DDS 통신, 센서 드라이버 교체, 자율주행 실험까지 한 흐름으로 연결했습니다. 최종적으로 25m × 15m 수조에서 GPS 경로점 주행, LiDAR 장애물 회피, 영상 기반 도킹, 통합 임무를 각각 10회씩 수행하며 시뮬레이션에서 만든 구조가 실제 환경에서도 작동하는지 확인했습니다.',
     contribution: [
-      'Unity 기반 해양 환경과 무인보트 주행 시뮬레이션 구성',
-      'VR HMD·드라이빙 휠을 연결한 몰입형 조종 인터페이스 구현',
-      '실물 보트의 PWM·IMU·GPS 데이터 연동과 PID 제어 시험',
+      'Unity URP·Shader Graph 기반 수상 환경과 쌍동선 무인보트 물리 시뮬레이션 구현',
+      'Raycasting LiDAR, GPS, IMU, 카메라 가상 센서와 ROS2 메시지 발행 구조 구현',
+      'A*·VFH/DWA·EKF·PID·YOLOv8을 기능별 ROS2 노드로 분리해 자율주행 파이프라인 구성',
+      '요구 전력 계산과 부품 사양 검토에 참여하고 센서·구동 장비 선정 및 구매',
+      '3D 프린팅 출력물의 서포트 제거, 샌딩, 도장, 접합, 방수, 보강 및 선체 조립',
+      'Jetson Nano·ESC·LiDAR·GPS·IMU·카메라 연동과 /cmd_vel 기반 좌우 모터 PWM 제어',
+      'Wi-Fi·DDS 통신 환경 구성과 4개 자율 임무 40회 수상 실험 및 실패 원인 분석',
     ],
     categories: ['VR', 'Robotics', 'Digital Twin'],
-    period: '2024',
-    role: 'VR 시뮬레이션 · 무인보트 제어 연동',
-    technologies: ['Unity', 'VR HMD', 'Driving Wheel', 'PWM', 'IMU/GPS', 'PID Control'],
-    achievements: [
-      '가상 주행과 야외 실물 무인보트 제어를 연결한 통합 데모 구현',
-      '수상 환경의 제어 오차를 확인하고 반복 시험할 수 있는 검증 기반 구축',
+    period: '2024 · 석사 졸업 연구',
+    role: '시스템 통합 · Unity/ROS2 개발 · 제작/조립 · 수상 실험 및 분석',
+    technologies: [
+      'Unity 2020.3 LTS',
+      'ROS2 Humble',
+      'Ubuntu 22.04',
+      'Jetson Nano',
+      'C#',
+      'Python',
+      'ROS-TCP-Connector',
+      'VR HMD',
+      'Driving Wheel',
+      'LiDAR',
+      'GPS · IMU · Camera',
+      'Wi-Fi · DDS',
+      'EKF · PID',
+      'A* · VFH · DWA',
+      'YOLOv8',
+      '3D Printing',
     ],
-    image: '/media/2024/vr-unmanned-boat-cover.jpg',
-    imageAlt: '가상 무인보트 시뮬레이션과 VR 드라이빙 장치 시연 장면',
-    paperUrl: '',
-    videoUrl: '/media/2024/vr-unmanned-boat-demo.mp4',
+    achievements: [
+      '가상 센서 노드를 실제 센서 드라이버로 교체하는 방식으로 시뮬레이션 제어 구조의 실물 전환 검증',
+      'GPS 경로점 9/10, LiDAR 장애물 회피 8/10, 영상 기반 도킹 9/10, 통합 임무 7/10 성공',
+      '총 40회의 수상 실험에서 센서 노이즈·반사광·통신 지연·다중 제어 명령 충돌을 확인하고 개선 방향 도출',
+    ],
+    image: '/media/2024/boat/cover.jpg',
+    imageAlt: '수조 위에서 임무를 수행하는 직접 제작한 쌍동선 무인보트',
+    gallery: [
+      {
+        src: '/media/2024/boat/hull-3d-printing.jpg',
+        alt: '서포트와 함께 출력 중인 무인보트 선체 부품',
+      },
+      {
+        src: '/media/2024/boat/catamaran-assembly.jpg',
+        alt: '출력과 후가공을 마친 쌍동선 선체 조립 과정',
+      },
+      {
+        src: '/media/2024/boat/control-electronics.jpg',
+        alt: '모터와 센서 구동을 위한 제어 장치 배선 및 테스트',
+      },
+      {
+        src: '/media/2024/boat/ros2-network-test.jpg',
+        alt: 'Jetson과 원격 PC 사이 ROS2 토픽 통신 확인 화면',
+      },
+      {
+        src: '/media/2024/boat/field-obstacle-test.jpg',
+        alt: '흰색 장애물 사이를 주행하는 완성된 무인보트',
+      },
+    ],
+    paperUrl: '/media/2024/boat/unmanned-surface-vehicle-thesis.pdf',
+    paperTitle: 'Unity-ROS 기반 가상 시뮬레이션 환경을 통한 소형 무인보트 임베디드 시스템 구현',
+    paperType: "Master's Thesis",
+    videoUrl: '/media/2024/boat/field-mission-tests.mp4',
     codeUrl: '',
     codeStatus: 'Private prototype',
     featured: true,
+    caseStudy: {
+      headline: '가상에서 만든 제어 구조를, 직접 만든 배에 옮겨 물 위에서 증명하다',
+      introduction: [
+        '이 프로젝트는 화면 속 시뮬레이션을 만드는 데서 끝나지 않았습니다. Unity에 수상 환경과 센서를 만들고, ROS2 자율주행 코드를 검증한 뒤, 같은 구조를 실제 소형 무인보트에 이식해 수상 임무까지 수행한 Sim-to-Real 연구입니다.',
+        '처음부터 선박·전기 분야의 전공자는 아니었습니다. 필요한 것을 하나씩 배우며 요구 전력을 계산하고 장비를 고르고, 3D 프린팅 출력물의 후가공과 방수, 하드웨어 조립, 센서·네트워크 연동, 현장 실험과 결과 분석까지 이어 갔습니다. 서로 다른 분야를 하나의 작동하는 시스템으로 연결해 끝까지 검증한 경험이 이 연구의 핵심입니다.',
+      ],
+      scope: {
+        direct: [
+          'Unity 수상 환경·보트 동역학·가상 센서 구현',
+          'ROS2 노드 구성과 Unity–ROS 메시지 연동',
+          '요구 전력·부품 사양 검토 참여 및 장비 선정·구매',
+          '3D 출력물 후가공·도장·접합·방수·보강·조립',
+          'Jetson Nano 기반 센서·구동부 통합과 네트워크 구성',
+          '40회 수상 실험의 설계·수행·기록·원인 분석',
+        ],
+        collaboration:
+          '선체 형상 설계와 전장 구성은 전기 전공 협업자의 도움을 받았습니다. 설계를 혼자 했다고 포장하지 않고, 전력값 계산과 부품 검토를 함께 수행하며 실제 제작과 소프트웨어 통합, 실험까지 책임지고 연결했습니다.',
+      },
+      metrics: [
+        { value: '4종', label: 'LiDAR · GPS · IMU · Camera 센서' },
+        { value: '5개', label: '기능별 ROS2 자율주행 노드' },
+        { value: '40회', label: '4개 임무 반복 수상 실험' },
+        { value: '33 / 40', label: '전체 임무 성공 횟수' },
+      ],
+      systemFlow: [
+        {
+          step: '01',
+          title: 'Unity 가상환경',
+          description: '수면·선체 물리와 가상 센서 생성',
+        },
+        {
+          step: '02',
+          title: 'ROS2 메시지',
+          description: 'LaserScan·NavSatFix·Imu·Image 표준화',
+        },
+        {
+          step: '03',
+          title: '자율주행 노드',
+          description: '경로·회피·융합·제어·객체 인식',
+        },
+        {
+          step: '04',
+          title: '실물 드라이버',
+          description: 'Jetson·센서·ESC·좌우 모터 연동',
+        },
+        {
+          step: '05',
+          title: '수상 검증',
+          description: '4개 임무 40회 수행과 실패 분석',
+        },
+      ],
+      chapters: [
+        {
+          number: '01',
+          eyebrow: 'From Limitation to Architecture',
+          title: '2023년의 한계를 다음 시스템의 설계 조건으로 바꾸다',
+          paragraphs: [
+            '2023년 Arduino 기반 실차–가상 차량 프로토타입에서는 지속적인 센서 전송 과정에서 메모리와 데이터 누적, 통신 지연, 실물과 가상 상태의 동기화 문제가 나타났습니다. 단순히 보드를 바꾸는 대신, 센서·판단·제어를 기능별로 분리하고 같은 메시지 구조를 가상과 실물에서 공유하는 Linux·ROS2 기반 구조로 발전시켰습니다.',
+            '실제 배를 만들기 위해서는 소프트웨어 밖의 문제도 풀어야 했습니다. 필요한 센서와 컴퓨팅 장치, 모터·ESC·배터리의 사양을 조사하고 전기 전공 협업자와 요구 전력을 함께 계산했습니다. 그 결과를 기준으로 장비를 선정하고 직접 구매하며 구현 가능한 시스템 범위를 정했습니다.',
+          ],
+          points: [
+            '센서·경로 계획·회피·위치 추정·제어 노드의 모듈화',
+            '가상 센서와 실제 센서가 동일한 ROS2 메시지를 사용하도록 인터페이스 정의',
+            '전력·중량·통신 환경을 함께 고려한 장비 선정',
+          ],
+          media: [
+            {
+              src: '/media/2024/boat/control-electronics.jpg',
+              alt: '초기 제어 장치와 배선 시험',
+              caption: '센서와 구동부를 연결하며 검증한 초기 제어 장치',
+            },
+            {
+              src: '/media/2024/boat/ros2-network-test.jpg',
+              alt: 'Jetson과 원격 컴퓨터 사이의 ROS2 토픽 통신 시험',
+              caption: 'Jetson–원격 PC 간 ROS2 토픽 송수신 확인',
+            },
+          ],
+        },
+        {
+          number: '02',
+          eyebrow: 'Virtual Proving Ground',
+          title: '실물에 올리기 전에, 가상 바다와 센서를 먼저 만들다',
+          paragraphs: [
+            'Unity 2020.3 LTS의 URP·Shader Graph·VFX Graph를 활용해 물결과 반사, 장애물이 존재하는 수상 환경을 구성했습니다. 쌍동선 모델에는 Rigidbody 기반 힘과 토크, 선형·각 저항을 적용해 좌우 추력 변화에 따른 이동과 회전을 확인할 수 있도록 했습니다.',
+            'Raycasting을 0.5° 간격으로 360° 회전시키는 LiDAR, Transform 값을 사용하는 GPS·IMU, RenderTexture 기반 카메라를 가상 센서로 구현했습니다. ROS-TCP-Connector와 ROS-TCP-Endpoint를 통해 LaserScan, NavSatFix, Imu, Image 메시지를 발행하고, VR HMD·드라이빙 휠을 연결해 사람이 직접 조종하며 상황을 확인하는 인터페이스도 시험했습니다.',
+          ],
+          points: [
+            'Gerstner Wave·노이즈·Normal Map을 조합한 수면 표현',
+            'LiDAR·GPS·IMU·Camera 가상 센서와 ROS2 토픽 발행',
+            '/cmd_vel을 좌우 추력과 회전력으로 변환하는 가상 추진기',
+            'RViz·포인트클라우드·VR 시점을 통한 센서 상태 확인',
+          ],
+          media: [
+            {
+              src: '/media/2024/unmanned-boat-simulation.jpg',
+              alt: 'Unity 수상 환경에서 주행하는 가상 무인보트',
+              caption: '물리와 장애물을 포함한 Unity 수상 시뮬레이션',
+            },
+            {
+              src: '/media/2024/unmanned-boat-lidar.jpg',
+              alt: 'Unity에서 확인한 LiDAR 포인트클라우드',
+              caption: '가상·기록 LiDAR 데이터의 Unity/VR 시각화',
+            },
+          ],
+        },
+        {
+          number: '03',
+          eyebrow: 'Sim-to-Real',
+          title: '가상 센서만 실제 드라이버로 바꾸는 전환 구조를 설계하다',
+          paragraphs: [
+            '핵심은 시뮬레이션 전용 코드를 따로 만드는 것이 아니라, 경로 계획·장애물 회피·위치 추정·제어·객체 인식 노드가 가상과 실물에서 동일하게 동작하도록 하는 것이었습니다. 실제 보트에서는 가상 센서 노드만 LiDAR·GPS·IMU·카메라 드라이버로 교체하고, 나머지 제어 흐름은 유지했습니다.',
+            'Jetson Nano에 Ubuntu 22.04와 ROS2 Humble을 구성하고 Wi-Fi 환경의 IP, DDS, ROS_DOMAIN_ID, 멀티캐스트 설정을 맞췄습니다. /cmd_vel을 ESC PWM 신호로 변환해 좌우 모터를 구동하고, 타임스탬프와 EKF를 이용해 주기가 다른 센서 데이터를 결합했습니다.',
+          ],
+          points: [
+            'A* 경로 계획과 VFH/DWA 장애물 회피',
+            'GPS·IMU EKF 융합과 PID 기반 좌우 추진기 제어',
+            'YOLOv8 기반 표적 인식과 영상 도킹 흐름',
+            'rosbag·RViz·rqt를 이용한 현장 상태 기록과 진단',
+          ],
+          media: [
+            {
+              src: '/media/2024/boat/ros2-network-test.jpg',
+              alt: 'ROS2 네트워크 통신 테스트 화면',
+              caption: 'Jetson과 원격 환경에서 동일 토픽을 확인한 통신 시험',
+            },
+            {
+              src: '/media/2024/boat/mission-targets.jpg',
+              alt: '영상 인식과 도킹 임무에 사용한 표적 보드',
+              caption: '영상 인식·도킹 임무용 표적과 시험 환경 구성',
+            },
+          ],
+        },
+        {
+          number: '04',
+          eyebrow: 'Build the Physical System',
+          title: '출력물을 물에 뜨는 실제 시스템으로 완성하다',
+          paragraphs: [
+            '쌍동선은 수상 안정성과 조향성을 고려해 선택했습니다. 제공받은 선체 형상을 3D 프린팅하고 서포트를 제거한 뒤, 샌딩과 표면 정리, 레진·에폭시 접합, 방수 코팅과 실링, 부력 확인, 브리지 보강을 거쳐 실제 선체로 만들었습니다.',
+            '완성된 선체에는 Jetson Nano, ESC, 배터리, LiDAR, GPS, IMU, 카메라를 배치했습니다. 단순 조립 사진을 남기는 데 그치지 않고, 무게 중심과 방수, 케이블 동선, 센서 시야, 유지보수 가능성을 반복해서 확인하며 구조를 보완했습니다.',
+          ],
+          points: [
+            '3D 프린팅 → 서포트 제거 → 샌딩 → 도장 → 접합 → 방수',
+            '쌍동선 브리지와 장비 수납부 보강 및 부력 확인',
+            '센서 시야·무게 중심·배선·정비성을 고려한 장비 배치',
+          ],
+          media: [
+            {
+              src: '/media/2024/boat/hull-3d-printing.jpg',
+              alt: '3D 프린터로 출력 중인 선체 부품',
+              caption: '서포트를 포함한 대형 선체 부품 출력',
+            },
+            {
+              src: '/media/2024/boat/hull-finishing.jpg',
+              alt: '표면 정리와 코팅을 진행한 선체',
+              caption: '샌딩·표면 정리·방수 코팅 과정',
+            },
+            {
+              src: '/media/2024/boat/fabrication-workbench.jpg',
+              alt: '선체와 장비를 조립하는 제작 작업대',
+              caption: '출력물과 자재를 실제 구조로 맞춰 가는 제작 과정',
+            },
+            {
+              src: '/media/2024/boat/catamaran-assembly.jpg',
+              alt: '색상 도장과 조립이 진행된 쌍동선 선체',
+              caption: '두 선체와 중앙 장비부를 결합한 쌍동선 조립',
+            },
+          ],
+        },
+        {
+          number: '05',
+          eyebrow: 'Field Validation',
+          title: '25m × 15m 수조에서 네 가지 임무를 반복하다',
+          paragraphs: [
+            '실험은 GPS 경로점 주행, LiDAR 장애물 회피, 영상 기반 도킹, 세 기능을 연결한 통합 임무로 나눴습니다. 각 임무를 10회씩 같은 기준으로 반복해 단발성 시연이 아닌 재현성과 실패 조건을 확인했습니다.',
+            '수조에는 네 개의 장애물과 도킹 표적을 배치했습니다. 성공 여부뿐 아니라 GPS 점프, LiDAR 노이즈, 회전 관성, 반사광, 여러 노드가 동시에 /cmd_vel을 발행할 때의 제어권 충돌까지 기록했습니다.',
+          ],
+          media: [
+            {
+              src: '/media/2024/boat/field-obstacle-test.jpg',
+              alt: '수조 장애물 사이를 주행하는 무인보트',
+              caption: 'LiDAR 장애물 회피와 통합 임무 수상 시험',
+            },
+          ],
+        },
+      ],
+      videos: [
+        {
+          src: '/media/2024/boat/virtual-simulation.mp4',
+          poster: '/media/2024/boat/virtual-simulation-poster.jpg',
+          title: 'Unity 가상 수상환경·LiDAR 검증',
+          description: '수상 물리, 장애물 환경, 포인트클라우드와 센서 흐름을 실물 적용 전에 확인했습니다.',
+        },
+        {
+          src: '/media/2024/boat/field-mission-tests.mp4',
+          poster: '/media/2024/boat/field-mission-poster.jpg',
+          title: '실물 무인보트 자율 임무 시험',
+          description: '완성된 쌍동선이 실제 수조에서 장애물을 인지하고 회피하는 과정을 모았습니다.',
+        },
+      ],
+      resultIntro:
+        '성공 기준을 임무별로 먼저 정한 뒤 총 40회의 시험을 수행했습니다. 결과는 좋은 장면만 고른 시연 영상이 아니라, 실제 환경에서 어떤 센서와 제어 문제가 발생했는지를 보여 주는 검증 기록입니다.',
+      results: [
+        {
+          score: '9 / 10',
+          title: 'GPS 경로점 주행',
+          description: '목표 경로에서 3m 이상 이탈하면 실패로 판정했습니다. 한 차례 GPS 값이 순간적으로 튀며 경로를 벗어났습니다.',
+        },
+        {
+          score: '8 / 10',
+          title: 'LiDAR 장애물 회피',
+          description: '네 개 장애물을 모두 피하면 성공으로 판정했습니다. 센서 노이즈와 회전 관성, 좁은 수조 조건이 실패에 영향을 줬습니다.',
+        },
+        {
+          score: '9 / 10',
+          title: '영상 기반 도킹',
+          description: '표적 1m 이내 접근을 성공으로 정의했습니다. 수면 반사와 조명 변화로 객체 인식이 흔들린 한 차례를 확인했습니다.',
+        },
+        {
+          score: '7 / 10',
+          title: '통합 자율주행 임무',
+          description: '4개 GPS 지점, 장애물 회피, 카메라 도킹을 연속 수행했습니다. 센서 간섭과 다중 제어 명령 충돌이 가장 큰 변수였습니다.',
+        },
+      ],
+      learnings: [
+        {
+          label: 'SENSOR',
+          title: '실제 센서는 정답을 주지 않는다',
+          description: 'GPS 점프, LiDAR 노이즈, 카메라 반사광을 겪으며 필터링과 타임스탬프, 센서 융합이 알고리즘만큼 중요하다는 것을 확인했습니다.',
+        },
+        {
+          label: 'CONTROL',
+          title: '물 위에서는 관성과 지연이 누적된다',
+          description: '시뮬레이션보다 큰 회전 관성과 추진 지연을 확인해 PID와 회피 판단 시점을 실제 운동 특성에 맞춰 조정해야 했습니다.',
+        },
+        {
+          label: 'ARCHITECTURE',
+          title: '여러 판단 노드에는 제어권 규칙이 필요하다',
+          description: '여러 노드가 /cmd_vel을 동시에 발행하면 명령이 충돌했습니다. 우선순위와 중재 구조가 통합 임무의 안정성을 좌우했습니다.',
+        },
+        {
+          label: 'ENGINEERING',
+          title: '소프트웨어 밖의 조건까지 시스템이다',
+          description: '전력, 방수, 부력, 배선, Wi-Fi 환경이 모두 주행 결과에 연결됐습니다. 구현은 코드가 아니라 전체 조건을 함께 맞추는 일임을 배웠습니다.',
+        },
+      ],
+      conclusion: {
+        title: '비전공의 경계를 넘어, 한 시스템을 끝까지 연결한 경험',
+        description:
+          '이 연구를 통해 가상 환경에서 검증한 ROS2 제어 코드를 큰 구조 변경 없이 실제 임베디드 시스템에 적용할 수 있음을 확인했습니다. 동시에 실제 환경에서만 드러나는 센서 노이즈와 반사광, 통신 지연, 제어 충돌을 데이터로 남겼습니다. 배를 혼자 설계했다는 이야기가 아니라, 필요한 도움을 구하고 새로운 분야를 학습하며 시뮬레이션·제작·통합·실험을 끝까지 완성한 과정이 이 프로젝트가 보여 주는 가장 큰 역량입니다.',
+      },
+    },
   },
   {
     id: 'rag-military-vr-training',
@@ -186,6 +485,7 @@ export const projects = [
     codeUrl: '',
     codeStatus: 'Private prototype',
     featured: true,
+    hidden: true,
   },
   {
     id: 'digital-twin-vehicle-sync',

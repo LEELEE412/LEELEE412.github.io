@@ -11,6 +11,7 @@ import {
   Layers3,
   UserRound,
 } from '@lucide/vue'
+import ProjectCaseStudy from '../components/ProjectCaseStudy.vue'
 import { findProject, projects } from '../data/projects'
 
 const route = useRoute()
@@ -100,7 +101,10 @@ function mediaAlt(item, index) {
           </dl>
         </section>
 
+        <ProjectCaseStudy v-if="project.caseStudy" :project="project" />
+
         <div
+          v-else
           class="detail-work-grid"
           :class="{
             'detail-work-grid-single': !project.challenge,
@@ -124,7 +128,7 @@ function mediaAlt(item, index) {
           </div>
         </div>
 
-        <section v-if="hasMedia" class="detail-media-section" aria-labelledby="project-media-title">
+        <section v-if="hasMedia && !project.caseStudy" class="detail-media-section" aria-labelledby="project-media-title">
           <div class="detail-section-heading">
             <div>
               <p class="eyebrow">Media</p>
@@ -162,14 +166,18 @@ function mediaAlt(item, index) {
             :alt="project.imageAlt"
           />
 
-          <div v-if="gallery.length" class="detail-gallery">
+          <div
+            v-if="gallery.length"
+            class="detail-gallery"
+            :class="{ 'detail-gallery-three': gallery.length === 3 }"
+          >
             <figure v-for="(item, index) in gallery" :key="mediaSource(item)">
               <img :src="mediaSource(item)" :alt="mediaAlt(item, index)" />
             </figure>
           </div>
         </section>
 
-        <section v-if="hasOutcomes" class="detail-outcome-section" aria-labelledby="project-outcome-title">
+        <section v-if="hasOutcomes && !project.caseStudy" class="detail-outcome-section" aria-labelledby="project-outcome-title">
           <div>
             <p class="eyebrow">Outcome</p>
             <h2 id="project-outcome-title">성과 · 연구 결과</h2>
@@ -187,7 +195,7 @@ function mediaAlt(item, index) {
             >
               <FileText :size="18" aria-hidden="true" />
               <span>
-                <small>Journal Article</small>
+                <small>{{ project.paperType || 'Journal Article' }}</small>
                 <strong>{{ project.paperTitle || '관련 논문 보기' }}</strong>
               </span>
               <ExternalLink :size="15" aria-hidden="true" />
