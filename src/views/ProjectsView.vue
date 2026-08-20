@@ -14,12 +14,16 @@ const fieldFilters = [
 
 const activeFilter = ref('All')
 const activeYear = ref('All years')
-const projectYears = ['All years', ...new Set(projects.map((project) => project.year))]
+const visibleProjects = computed(() => projects.filter((project) => !project.hidden))
+const projectYears = computed(() => [
+  'All years',
+  ...new Set(visibleProjects.value.map((project) => project.year)),
+])
 
 const filteredProjects = computed(() => {
   const selectedField = fieldFilters.find((filter) => filter.label === activeFilter.value)
 
-  return projects.filter((project) => {
+  return visibleProjects.value.filter((project) => {
     const matchesYear = activeYear.value === 'All years' || project.year === activeYear.value
     const matchesField =
       !selectedField?.categories.length ||

@@ -5,7 +5,9 @@ import { profile } from '../data/profile'
 import { projects } from '../data/projects'
 import ProjectCard from '../components/ProjectCard.vue'
 
-const featuredProjects = computed(() => projects.filter((project) => project.featured).slice(0, 4))
+const featuredProjects = computed(() =>
+  projects.filter((project) => project.featured && !project.hidden).slice(0, 4),
+)
 </script>
 
 <template>

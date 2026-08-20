@@ -9,24 +9,30 @@ import {
   ExternalLink,
   FileText,
   Layers3,
-  PlayCircle,
   UserRound,
 } from '@lucide/vue'
 import { findProject, projects } from '../data/projects'
 
 const route = useRoute()
-const project = computed(() => findProject(route.params.id))
+const visibleProjects = computed(() => projects.filter((item) => !item.hidden))
+const project = computed(() => {
+  const selectedProject = findProject(route.params.id)
+  return selectedProject?.hidden ? null : selectedProject
+})
 const gallery = computed(() => project.value?.gallery ?? [])
 const hasMedia = computed(
   () => Boolean(project.value?.videoUrl || project.value?.image || gallery.value.length),
 )
 const hasRelatedLinks = computed(
-  () => Boolean(project.value?.videoUrl || project.value?.codeUrl || project.value?.paperUrl),
+  () => Boolean(project.value?.codeUrl),
+)
+const hasOutcomes = computed(
+  () => Boolean(project.value?.achievements?.length || project.value?.paperUrl),
 )
 const nextProject = computed(() => {
-  const currentIndex = projects.findIndex((item) => item.id === project.value?.id)
-  if (currentIndex < 0) return projects[0]
-  return projects[(currentIndex + 1) % projects.length]
+  const currentIndex = visibleProjects.value.findIndex((item) => item.id === project.value?.id)
+  if (currentIndex < 0) return visibleProjects.value[0]
+  return visibleProjects.value[(currentIndex + 1) % visibleProjects.value.length]
 })
 
 function mediaSource(item) {
@@ -81,22 +87,28 @@ function mediaAlt(item, index) {
           </dl>
         </section>
 
-        <div class="detail-work-grid">
-          <section v-if="project.contribution?.length" aria-labelledby="project-build-title">
-            <p class="eyebrow">Build</p>
-            <h2 id="project-build-title">주요 구현</h2>
-            <ul class="detail-list">
-              <li v-for="item in project.contribution" :key="item">{{ item }}</li>
-            </ul>
+        <div
+          class="detail-work-grid"
+          :class="{
+            'detail-work-grid-single': !project.challenge,
+            'detail-work-grid-build-wide': project.id === 'vr-museum-curator',
+          }"
+        >
+          <section v-if="project.challenge" class="detail-project-context" aria-labelledby="project-context-title">
+            <p class="eyebrow">Context</p>
+            <h2 id="project-context-title">프로젝트 설명</h2>
+            <p>{{ project.challenge }}</p>
           </section>
 
-          <section v-if="project.achievements?.length" aria-labelledby="project-outcome-title">
-            <p class="eyebrow">Outcome</p>
-            <h2 id="project-outcome-title">성과</h2>
-            <ul class="detail-list detail-list-outcome">
-              <li v-for="item in project.achievements" :key="item">{{ item }}</li>
-            </ul>
-          </section>
+          <div class="detail-work-primary">
+            <section v-if="project.contribution?.length" aria-labelledby="project-build-title">
+              <p class="eyebrow">Build</p>
+              <h2 id="project-build-title">주요 구현</h2>
+              <ul class="detail-list">
+                <li v-for="item in project.contribution" :key="item">{{ item }}</li>
+              </ul>
+            </section>
+          </div>
         </div>
 
         <section v-if="hasMedia" class="detail-media-section" aria-labelledby="project-media-title">
@@ -134,6 +146,32 @@ function mediaAlt(item, index) {
           </div>
         </section>
 
+        <section v-if="hasOutcomes" class="detail-outcome-section" aria-labelledby="project-outcome-title">
+          <div>
+            <p class="eyebrow">Outcome</p>
+            <h2 id="project-outcome-title">성과 · 연구 결과</h2>
+          </div>
+          <div class="detail-outcome-content">
+            <ul v-if="project.achievements?.length" class="detail-list detail-list-outcome">
+              <li v-for="item in project.achievements" :key="item">{{ item }}</li>
+            </ul>
+            <a
+              v-if="project.paperUrl"
+              class="detail-paper-link"
+              :href="project.paperUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FileText :size="18" aria-hidden="true" />
+              <span>
+                <small>Journal Article</small>
+                <strong>{{ project.paperTitle || '관련 논문 보기' }}</strong>
+              </span>
+              <ExternalLink :size="15" aria-hidden="true" />
+            </a>
+          </div>
+        </section>
+
         <section v-if="hasRelatedLinks" class="detail-related" aria-labelledby="project-links-title">
           <div>
             <p class="eyebrow">Links</p>
@@ -142,14 +180,6 @@ function mediaAlt(item, index) {
           <div class="detail-related-links">
             <a v-if="project.codeUrl" :href="project.codeUrl" target="_blank" rel="noopener noreferrer">
               <Code2 :size="18" aria-hidden="true" /> GitHub
-              <ExternalLink :size="15" aria-hidden="true" />
-            </a>
-            <a v-if="project.paperUrl" :href="project.paperUrl" target="_blank" rel="noopener noreferrer">
-              <FileText :size="18" aria-hidden="true" /> 논문
-              <ExternalLink :size="15" aria-hidden="true" />
-            </a>
-            <a v-if="project.videoUrl" :href="project.videoUrl" target="_blank" rel="noopener noreferrer">
-              <PlayCircle :size="18" aria-hidden="true" /> 영상 새 창에서 보기
               <ExternalLink :size="15" aria-hidden="true" />
             </a>
           </div>
