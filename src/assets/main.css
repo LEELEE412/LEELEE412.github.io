@@ -2721,12 +2721,20 @@ code {
   box-shadow: none;
 }
 
+.detail-video-embed {
+  border: 0;
+}
+
 .detail-outcome-section {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
   gap: 35px;
   align-items: start;
   padding-top: 56px;
+}
+
+.detail-outcome-section h2 {
+  font-size: clamp(1.45rem, 2.15vw, 1.9rem);
 }
 
 .detail-outcome-content {

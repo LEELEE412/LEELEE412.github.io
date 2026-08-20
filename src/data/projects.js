@@ -361,7 +361,7 @@ export const projects = [
     description:
       '투자 성공과 손실을 하나의 VR 스토리로 경험하게 하여 무리한 투자와 부채 위험을 학습하도록 설계한 몰입형 금융교육 연구입니다.',
     challenge:
-      '투자 지식이 적은 사용자도 짧은 체험 안에서 의사결정과 결과의 변화를 이해하고, 실제 투자처럼 느낄 수 있는 시나리오가 필요했습니다.',
+      '가상현실 속에서 투자와 경제 활동을 직접 경험할 수 있도록 제작한 VR 경제 체험 콘텐츠입니다. Unity와 Meta Quest 2를 활용해 투자 선택에 따른 수익과 손실을 체험하고, 가상 공간에서 경제적 의사결정의 결과를 직관적으로 느낄 수 있도록 구성했습니다.\n\n단순히 정보를 읽는 방식이 아니라 사용자가 직접 선택하고 결과를 경험하는 과정에 초점을 맞췄으며, 사용자 체험을 통해 VR 콘텐츠의 몰입감과 금융·경제 교육 분야 활용 가능성을 함께 확인했습니다.',
     contribution: [
       'NPC 대화–이동–투자로 이어지는 반복형 VR 시나리오 설계',
       '매수·매도·잔고·수익률을 조작하는 공간형 투자 차트 구현',
@@ -371,13 +371,12 @@ export const projects = [
     period: '2023.03 — 2023.06',
     role: '제1저자 · 연구 및 VR 콘텐츠 개발',
     technologies: ['Unity', 'XR Interaction Toolkit', 'Meta Quest 2', 'C#', 'Mixamo'],
-    achievements: [
-      '한국정보기술학회논문지 제21권 제6호 게재',
-      'VR 기반 금융교육의 실재감과 몰입 가능성 확인',
-    ],
+    achievements: [],
     image: '/media/2023/vr-investment-risk-cover.jpg',
     imageAlt: 'VR 투자위험 콘텐츠의 투자 차트와 수익·손실 화면',
+    paperTitle: '실재감 높은 투자위험 체험을 위한 몰입형 가상현실 콘텐츠 개발',
     paperUrl: 'https://doi.org/10.14801/jkiit.2023.21.6.127',
+    youtubeUrl: 'https://www.youtube.com/embed/CrCUgV9TM6U',
     videoUrl: '',
     codeUrl: '',
     codeStatus: 'Research prototype',

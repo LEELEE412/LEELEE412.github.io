@@ -21,7 +21,13 @@ const project = computed(() => {
 })
 const gallery = computed(() => project.value?.gallery ?? [])
 const hasMedia = computed(
-  () => Boolean(project.value?.videoUrl || project.value?.image || gallery.value.length),
+  () =>
+    Boolean(
+      project.value?.youtubeUrl ||
+        project.value?.videoUrl ||
+        project.value?.image ||
+        gallery.value.length,
+    ),
 )
 const hasRelatedLinks = computed(
   () => Boolean(project.value?.codeUrl),
@@ -120,8 +126,18 @@ function mediaAlt(item, index) {
             <p>프로젝트의 실제 시연 화면과 결과물입니다.</p>
           </div>
 
+          <iframe
+            v-if="project.youtubeUrl"
+            class="detail-video detail-video-embed"
+            :src="project.youtubeUrl"
+            :title="`${project.title} 시연 영상`"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
           <video
-            v-if="project.videoUrl"
+            v-else-if="project.videoUrl"
             :key="project.videoUrl"
             class="detail-video"
             controls
