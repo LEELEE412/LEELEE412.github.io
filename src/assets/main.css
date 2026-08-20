@@ -2781,6 +2781,15 @@ code {
   line-height: 1.45;
 }
 
+.detail-code-link {
+  border-color: rgba(0, 122, 91, 0.28);
+  background: rgba(0, 122, 91, 0.045);
+}
+
+.detail-code-link small {
+  color: #007a5b;
+}
+
 .detail-gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

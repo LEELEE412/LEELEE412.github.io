@@ -37,11 +37,8 @@ const hasMedia = computed(
         gallery.value.length,
     ),
 )
-const hasRelatedLinks = computed(
-  () => Boolean(project.value?.codeUrl),
-)
 const hasOutcomes = computed(
-  () => Boolean(project.value?.achievements?.length || project.value?.paperUrl),
+  () => Boolean(project.value?.achievements?.length || project.value?.paperUrl || project.value?.codeUrl),
 )
 const nextProject = computed(() => {
   const currentIndex = visibleProjects.value.findIndex((item) => item.id === project.value?.id)
@@ -205,17 +202,18 @@ function mediaCaption(item) {
               </span>
               <ExternalLink :size="15" aria-hidden="true" />
             </a>
-          </div>
-        </section>
-
-        <section v-if="hasRelatedLinks" class="detail-related" aria-labelledby="project-links-title">
-          <div>
-            <p class="eyebrow">Links</p>
-            <h2 id="project-links-title">관련 링크</h2>
-          </div>
-          <div class="detail-related-links">
-            <a v-if="project.codeUrl" :href="project.codeUrl" target="_blank" rel="noopener noreferrer">
-              <Code2 :size="18" aria-hidden="true" /> GitHub
+            <a
+              v-if="project.codeUrl"
+              class="detail-paper-link detail-code-link"
+              :href="project.codeUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Code2 :size="18" aria-hidden="true" />
+              <span>
+                <small>Source Code</small>
+                <strong>{{ project.codeTitle || 'GitHub에서 프로젝트 코드 보기' }}</strong>
+              </span>
               <ExternalLink :size="15" aria-hidden="true" />
             </a>
           </div>

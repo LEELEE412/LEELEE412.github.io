@@ -113,6 +113,7 @@ export const projects = [
     paperUrl: '',
     videoUrl: '',
     codeUrl: 'https://github.com/LEELEE412/last2',
+    codeTitle: 'FinTrust 전체 소스 코드 · GitHub',
     codeStatus: 'Public repository',
     featured: true,
   },
