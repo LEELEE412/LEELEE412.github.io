@@ -194,8 +194,8 @@ export const projects = [
       'GPS 경로점 9/10, LiDAR 장애물 회피 8/10, 영상 기반 도킹 9/10, 통합 임무 7/10 성공',
       '총 40회의 수상 실험에서 센서 노이즈·반사광·통신 지연·다중 제어 명령 충돌을 확인하고 개선 방향 도출',
     ],
-    image: '/media/2024/boat/cover.jpg',
-    imageAlt: '수조 위에서 임무를 수행하는 직접 제작한 쌍동선 무인보트',
+    image: '/media/2024/boat/ppt-sim-to-real-poster.jpg',
+    imageAlt: 'LiDAR 가시화, VR 드라이빙 휠 기반 Unity 무인보트 조종, 실물 보트 주행을 연결한 세 장면',
     gallery: [
       {
         src: '/media/2024/boat/hull-3d-printing.jpg',
@@ -226,6 +226,8 @@ export const projects = [
     codeStatus: 'Private prototype',
     featured: true,
     caseStudy: {
+      coverImage: '/media/2024/boat/cover.jpg',
+      coverAlt: '수조 위에서 임무를 수행하는 직접 제작한 쌍동선 무인보트',
       headline: '가상에서 만든 제어 구조를, 직접 만든 배에 옮겨 물 위에서 증명하다',
       introduction: [
         '이 프로젝트는 화면 속 시뮬레이션을 만드는 데서 끝나지 않았습니다. Unity에 수상 환경과 센서를 만들고, ROS2 자율주행 코드를 검증한 뒤, 같은 구조를 실제 소형 무인보트에 이식해 수상 임무까지 수행한 Sim-to-Real 연구입니다.',
@@ -411,6 +413,12 @@ export const projects = [
         },
       ],
       videos: [
+        {
+          src: '/media/2024/boat/ppt-sim-to-real-overview.mp4',
+          poster: '/media/2024/boat/ppt-sim-to-real-poster.jpg',
+          title: 'LiDAR·VR 조종·실물 보트 연결',
+          description: '2024년 중간발표 PPT의 핵심 세 장면입니다. Unity 조종 장면은 실제 드라이빙 휠 사용자를 유지하고, 실물 주행 장면만 사람을 제외했습니다.',
+        },
         {
           src: '/media/2024/boat/virtual-simulation.mp4',
           poster: '/media/2024/boat/virtual-simulation-poster.jpg',

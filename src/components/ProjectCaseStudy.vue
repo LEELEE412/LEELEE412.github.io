@@ -12,7 +12,10 @@ defineProps({
 <template>
   <article class="case-study" aria-labelledby="case-study-title">
     <figure class="case-study-cover">
-      <img :src="project.image" :alt="project.imageAlt" />
+      <img
+        :src="project.caseStudy.coverImage || project.image"
+        :alt="project.caseStudy.coverAlt || project.imageAlt"
+      />
       <figcaption>
         <span>Flagship Project</span>
         가상 시뮬레이션에서 실제 수상 실험까지

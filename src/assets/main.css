@@ -3233,6 +3233,10 @@ code {
   background: var(--white);
 }
 
+.case-study-video-grid article:first-child:nth-last-child(3) {
+  grid-column: 1 / -1;
+}
+
 .case-study-video-grid video {
   display: block;
   width: 100%;
