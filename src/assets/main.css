@@ -2794,12 +2794,25 @@ code {
 
 .detail-gallery figure {
   margin: 0;
+  border: 1px solid var(--line);
+  background: var(--white);
 }
 
 .detail-gallery img {
+  display: block;
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+}
+
+.detail-gallery figcaption {
+  min-height: 50px;
+  padding: 13px 15px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.55;
 }
 
 .detail-related {

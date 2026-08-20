@@ -56,6 +56,10 @@ function mediaSource(item) {
 function mediaAlt(item, index) {
   return typeof item === 'string' ? `${project.value.title} 추가 이미지 ${index + 1}` : item.alt
 }
+
+function mediaCaption(item) {
+  return typeof item === 'string' ? '' : item.caption
+}
 </script>
 
 <template>
@@ -173,6 +177,7 @@ function mediaAlt(item, index) {
           >
             <figure v-for="(item, index) in gallery" :key="mediaSource(item)">
               <img :src="mediaSource(item)" :alt="mediaAlt(item, index)" />
+              <figcaption v-if="mediaCaption(item)">{{ mediaCaption(item) }}</figcaption>
             </figure>
           </div>
         </section>
