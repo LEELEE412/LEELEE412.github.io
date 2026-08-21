@@ -2963,12 +2963,12 @@ code {
 
 .case-study-scope-grid {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(360px, 2fr);
+  grid-template-columns: minmax(0, 13fr) minmax(340px, 7fr);
   gap: 16px;
 }
 
 .case-study-scope-card {
-  padding: clamp(28px, 4vw, 44px);
+  padding: clamp(28px, 3vw, 36px);
   border: 1px solid var(--line);
   background: var(--navy-050);
 }
@@ -2996,7 +2996,7 @@ code {
 .case-study-scope-card ul {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 28px;
+  gap: 0 20px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -3004,11 +3004,13 @@ code {
 
 .case-study-scope-card li {
   position: relative;
-  padding: 13px 0 13px 18px;
+  padding: 13px 0 13px 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.16);
-  font-size: 0.94rem;
+  font-size: 0.82rem;
   font-weight: 700;
   line-height: 1.65;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
 }
 
 .case-study-scope-card li::before {
@@ -3137,7 +3139,7 @@ code {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(48px, 8vw, 104px);
-  align-items: center;
+  align-items: start;
 }
 
 .case-study-chapter-reverse .case-study-chapter-copy {
@@ -3533,6 +3535,10 @@ code {
   .case-study-learning-grid,
   .case-study-media-grid {
     grid-template-columns: 1fr;
+  }
+
+  .case-study-scope-card li {
+    white-space: normal;
   }
 
   .case-study-metrics article {

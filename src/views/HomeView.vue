@@ -2,11 +2,13 @@
 import { computed } from 'vue'
 import { ArrowRight } from '@lucide/vue'
 import { profile } from '../data/profile'
-import { projects } from '../data/projects'
+import { homeFeaturedProjectIds, projects } from '../data/projects'
 import ProjectCard from '../components/ProjectCard.vue'
 
 const featuredProjects = computed(() =>
-  projects.filter((project) => project.featured && !project.hidden).slice(0, 4),
+  homeFeaturedProjectIds
+    .map((id) => projects.find((project) => project.id === id))
+    .filter((project) => project && !project.hidden),
 )
 </script>
 

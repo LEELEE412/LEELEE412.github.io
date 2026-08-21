@@ -1,5 +1,12 @@
 export const projectFilters = ['All', 'VR', 'Robotics', 'Digital Twin', 'Geospatial', 'AI', 'Web', 'HCI']
 
+export const homeFeaturedProjectIds = [
+  'vr-unmanned-boat-digital-twin',
+  'dem-osm-city-simulation',
+  'vr-investment-risk-experience',
+  'vr-museum-curator',
+]
+
 export const projects = [
   {
     id: 'dem-osm-city-simulation',
@@ -236,12 +243,12 @@ export const projects = [
       ],
       scope: {
         direct: [
-          'Unity 수상 환경·보트 동역학·가상 센서 구현',
-          'ROS2 노드 구성과 Unity–ROS 메시지 연동',
-          '요구 전력·부품 사양 검토 참여 및 장비 선정·구매',
-          '3D 출력물 후가공·도장·접합·방수·보강·조립',
-          'Jetson Nano 기반 센서·구동부 통합과 네트워크 구성',
-          '40회 수상 실험의 설계·수행·기록·원인 분석',
+          'Unity 수상환경·동역학·가상 센서 구현',
+          'ROS2 노드 구성·Unity–ROS 메시지 연동',
+          '전력·부품 사양 검토 및 장비 선정·구매',
+          '3D 출력물 후가공·방수·보강·조립',
+          'Jetson Nano 센서·구동부·네트워크 통합',
+          '수상 실험 40회 설계·수행·기록·분석',
         ],
         collaboration:
           '선체 형상 설계와 전장 구성은 전기 전공 협업자와 함께 진행했습니다. 요구 전력 계산과 부품 검토를 공동으로 수행했으며, 저는 실제 제작과 소프트웨어 통합, 네트워크 구성, 수상 실험을 맡아 전체 과정을 연결했습니다.',
