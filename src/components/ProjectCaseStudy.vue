@@ -76,7 +76,10 @@ defineProps({
       v-for="(chapter, chapterIndex) in project.caseStudy.chapters"
       :key="chapter.number"
       class="case-study-chapter"
-      :class="{ 'case-study-chapter-reverse': chapterIndex % 2 === 1 }"
+      :class="{
+        'case-study-chapter-reverse': chapterIndex % 2 === 1,
+        'case-study-chapter-stacked': chapter.media?.length === 2,
+      }"
     >
       <div class="case-study-chapter-copy">
         <div class="case-study-chapter-number">{{ chapter.number }}</div>
